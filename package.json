@@ -1,0 +1,23 @@
+{
+  "name": "Shreh",
+  "version": "1.0.0",
+  "description": "Horror game",
+  "author": "Mishazawa",
+  "license": "MIT",
+  "devDependencies": {
+    "@parcel/transformer-sass": "2.8.1",
+    "@parcel/transformer-typescript-tsc": "^2.8.1",
+    "@types/three": "^0.146.0",
+    "parcel": "^2.8.1",
+    "typescript": ">=3.0.0"
+  },
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel -p 4567 --https",
+    "build": "parcel build"
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "dependencies": {
+    "three": "^0.147.0"
+  }
+}
