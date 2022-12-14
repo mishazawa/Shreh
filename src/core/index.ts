@@ -9,7 +9,7 @@ export class Core {
   private renderer: WebGLRenderer;
   private currentScene: SceneLifecycle | undefined;
   private clock: Clock;
-
+  private frameId;
 
   public async setScene (s: SceneLifecycle) {
     await this.currentScene?.onDestroy();
@@ -40,13 +40,19 @@ export class Core {
   }
 
   public animate() {
-    window.requestAnimationFrame(() => this.animate());
+    this.frameId = window.requestAnimationFrame(() => this.animate());
 
-    if (this.currentScene) {
-      const delta = this.clock.getDelta();
-      this.currentScene.animate(delta);
-      const {scene, camera} = this.currentScene;
-      this.renderer.render(scene, camera);
+    try {
+      if (this.currentScene) {
+        const delta = this.clock.getDelta();
+        this.currentScene.animate(delta);
+        const {scene, camera} = this.currentScene;
+        this.renderer.render(scene, camera);
+      }
+    } catch (e) {
+      cancelAnimationFrame(this.frameId);
+      console.error(e);
+      return;
     }
   }
 
