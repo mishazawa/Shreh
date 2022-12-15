@@ -24,5 +24,9 @@
   "dependencies": {
     "three": "^0.147.0"
   },
-  "assetsPath": "src/assets"
+  "assetsPath": "src/assets",
+  "alias": {
+    "core": "./src/core",
+    "assets": "./src/assets"
+  }
 }

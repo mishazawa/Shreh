@@ -2,7 +2,7 @@ import { WebGLRenderer } from "three";
 
 const DEFAULT_CAMERA_NEAR = 0.1;
 const DEFAULT_CAMERA_FAR  = 1000;
-const DEFAULT_CAMERA_FOV  = 75;
+const DEFAULT_CAMERA_FOV  = 50;
 
 export class Globals {
 

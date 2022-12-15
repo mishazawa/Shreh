@@ -9,11 +9,10 @@ export class Core {
   private renderer: WebGLRenderer;
   private currentScene: SceneLifecycle | undefined;
   private clock: Clock;
-  private frameId;
+  private frameId: number;
 
   public async setScene (s: SceneLifecycle) {
     await this.currentScene?.onDestroy();
-
     this.currentScene = s;
     await this.currentScene.onInit();
   }

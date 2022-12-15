@@ -1,16 +1,14 @@
 import "./types.d";
 import { Core as App } from "core";
-import { TestScene } from "./game/scenes/test";
-import { TestSwapScene } from "./game/scenes/testswap";
+
+import { Intro } from './game/scenes/chapter1/Intro';
+
 
 const canvas = document.querySelector("canvas.screen");
 
 const shreh = new App(canvas as HTMLCanvasElement);
 
-shreh.setScene(new TestScene());
+shreh.setScene(new Intro()).then(() => {
+  shreh.animate();
+})
 
-shreh.animate();
-
-setTimeout(() => {
-  shreh.setScene(new TestSwapScene());
-}, 5000)

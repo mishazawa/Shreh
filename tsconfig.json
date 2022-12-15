@@ -1,5 +1,8 @@
 {
   "compilerOptions":{
+    "jsx": "react",
+
+    "moduleResolution":"node",
     "target": "es2015",
     "baseUrl": "./src",
     "paths": {
@@ -10,6 +13,9 @@
       "scenes/*": [
         "scenes",
         "scenes/*"
+      ],
+      "assets/*": [
+        "assets/*"
       ]
     }
   }
