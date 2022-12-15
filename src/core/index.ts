@@ -35,6 +35,7 @@ export class Core {
     const [w, h] = Globals.dimensions;
 
     this.renderer.setSize(w, h);
+    this.renderer.setPixelRatio(window.devicePixelRatio);
 
     Globals.renderer = this.renderer; // idk
   }
