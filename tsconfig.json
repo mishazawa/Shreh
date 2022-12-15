@@ -1,0 +1,16 @@
+{
+  "compilerOptions":{
+    "target": "es2015",
+    "baseUrl": "./src",
+    "paths": {
+      "core": [
+        "core/index.ts",
+        "core/*"
+      ],
+      "scenes/*": [
+        "scenes",
+        "scenes/*"
+      ]
+    }
+  }
+}

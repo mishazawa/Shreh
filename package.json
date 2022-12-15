@@ -11,12 +11,14 @@
     "parcel": "^2.8.1",
     "parcel-plugin-asset-copier": "^1.1.1",
     "parcel-reporter-static-files-copy": "^1.4.0",
+    "parcel-resolver-tspaths": "^0.0.9",
     "typescript": ">=3.0.0"
   },
   "source": "src/index.html",
   "scripts": {
     "start": "parcel -p 4567 --https",
-    "build": "parcel build"
+    "build": "parcel build",
+    "shreh": "node utils/scripts/cli.js"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "dependencies": {
