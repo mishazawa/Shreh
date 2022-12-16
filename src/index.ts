@@ -1,10 +1,14 @@
 import "./types.d";
-import { Core as App } from "core";
 
+import "./style/index.scss";
+
+import { Core as App } from "core";
 import { Intro } from './game/scenes/chapter1/Intro';
 
 
-const canvas = document.querySelector("canvas.screen");
+const canvas = document.createElement('canvas');
+
+document.body.appendChild(canvas);
 
 const shreh = new App(canvas as HTMLCanvasElement);
 

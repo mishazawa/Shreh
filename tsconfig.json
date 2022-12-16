@@ -1,22 +1,18 @@
 {
   "compilerOptions":{
+    "outDir": "./dist/",
     "jsx": "react",
-
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "module": "es6",
+    "target": "es5",
+    "jsx": "react",
+    "allowJs": true,
     "moduleResolution":"node",
-    "target": "es2015",
-    "baseUrl": "./src",
-    "paths": {
-      "core": [
-        "core/index.ts",
-        "core/*"
-      ],
-      "scenes/*": [
-        "scenes",
-        "scenes/*"
-      ],
-      "assets/*": [
-        "assets/*"
-      ]
-    }
-  }
+    "baseUrl": "./src"
+  },
+  "exclude": [
+      "node_modules",
+      "./utils"
+  ]
 }
