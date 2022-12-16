@@ -18,7 +18,7 @@
     "webpack-dev-server": "^4.11.1"
   },
   "scripts": {
-    "start": "webpack serve --open --mode=development",
+    "start": "webpack serve --mode=development",
     "build": "webpack --mode=production",
     "shreh": "node utils/scripts/cli.js"
   },
