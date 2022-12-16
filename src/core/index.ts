@@ -1,7 +1,12 @@
 import { Clock, WebGLRenderer } from "three";
+import { EffectComposer, Pass } from 'three/examples/jsm/postprocessing/EffectComposer';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
+
 import { Globals } from "./globals";
 import { IOnDestroy, IOnInit } from "./lifecycle";
 import { Scene } from "./Scene";
+
+
 
 type SceneLifecycle = Scene & IOnInit & IOnDestroy;
 
@@ -10,10 +15,13 @@ export class Core {
   private currentScene: SceneLifecycle | undefined;
   private clock: Clock;
   private frameId: number;
+  private composer;
+  private scenePass;
 
   public async setScene (s: SceneLifecycle) {
     await this.currentScene?.onDestroy();
-    this.currentScene = s;
+    this.updateScene(s)
+    this.updateCompositeStack();
     await this.currentScene.onInit();
   }
 
@@ -37,6 +45,8 @@ export class Core {
     this.renderer.setPixelRatio(window.devicePixelRatio);
 
     Globals.renderer = this.renderer; // idk
+
+    this.composer = new EffectComposer(this.renderer);
   }
 
   public animate() {
@@ -46,8 +56,7 @@ export class Core {
       if (this.currentScene) {
         const delta = this.clock.getDelta();
         this.currentScene.animate(delta);
-        const {scene, camera} = this.currentScene;
-        this.renderer.render(scene, camera);
+        this.composer.render();
       }
     } catch (e) {
       cancelAnimationFrame(this.frameId);
@@ -56,4 +65,20 @@ export class Core {
     }
   }
 
+  public addPostFx (pass: Pass) {
+    this.composer.addPass(pass);
+  }
+
+  private updateCompositeStack() {
+    this.composer.removePass(this.scenePass);
+
+    const {scene, camera} = this.currentScene;
+    this.scenePass = new RenderPass(scene, camera);
+
+    this.composer.insertPass(this.scenePass, 0)
+  }
+
+  private updateScene (s: SceneLifecycle) {
+    this.currentScene = s;
+  }
 }

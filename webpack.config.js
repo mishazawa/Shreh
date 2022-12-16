@@ -6,9 +6,9 @@ module.exports = {
   entry: './src/index.ts',
   module: {
     rules: [
-      { test: /\.glb$/,                  use: 'raw-loader' },
+      { test: /\.glb$/,                  use: 'file-loader' },
+      { test: /(\.jpg|\.png|\.tga)$/,    use: 'file-loader' },
       { test: /(\.glsl|\.frag|\.vert)$/, use: 'raw-loader' },
-      { test: /(\.jpg|\.png|\.tga)$/,    use: 'raw-loader' },
 
       {
         test: /\.tsx?$/,
