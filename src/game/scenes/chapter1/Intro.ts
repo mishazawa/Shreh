@@ -1,11 +1,9 @@
-import { AmbientLight, BoxGeometry, DirectionalLight, DynamicDrawUsage, Event, HemisphereLight, InstancedMesh, Matrix4, Mesh, MeshBasicMaterial, MeshStandardMaterial, Object3D, PerspectiveCamera, PMREMGenerator, Scene, SphereGeometry, TorusKnotGeometry, Vector3 } from "three";
-import { Globals }                  from "core/globals";
-import { IOnDestroy, IOnInit }      from "core/lifecycle";
-import { Scene as ShrehScene }      from "core/Scene";
+import { Globals } from "core/globals";
+import { IOnDestroy, IOnInit } from "core/lifecycle";
+import { Scene as ShrehScene } from "core/Scene";
+import { BoxGeometry, DirectionalLight, Event, Matrix4, Mesh, MeshBasicMaterial, MeshStandardMaterial, Object3D, PerspectiveCamera, PMREMGenerator, Scene, SphereGeometry, Vector3 } from "three";
 
 import { DebugEnvironment } from 'three/examples/jsm/environments/DebugEnvironment';
-import TEST_MODEL_URL from "assets/models/test_attrib.glb";
-import { loadGltf } from "core/loaders";
 
 let cube: Object3D<Event> | Mesh<BoxGeometry, MeshBasicMaterial>;
 let light: DirectionalLight;

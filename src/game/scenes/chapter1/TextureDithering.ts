@@ -30,12 +30,12 @@ export class TextureDithering extends ShrehScene implements IOnInit, IOnDestroy 
 
   public onInit () {
 
-const geometry = new TorusKnotGeometry( 10, 3, 100, 16 );
-const material = new MeshStandardMaterial( { color: 0xffff00 } );
-const torusKnot = new Mesh( geometry, material );
-this.scene.add( torusKnot );
-const light = new HemisphereLight( 0xffffbb, 0x080820, 10 );
-this.scene.add( light );
+  const geometry = new TorusKnotGeometry( 10, 3, 100, 16 );
+  const material = new MeshStandardMaterial( { color: 0xffff00 } );
+  const torusKnot = new Mesh( geometry, material );
+  this.scene.add( torusKnot );
+  const light = new HemisphereLight( 0xffffbb, 0x080820, 10 );
+  this.scene.add( light );
 
 
     return Promise.resolve()

@@ -22,7 +22,8 @@
   "scripts": {
     "start": "webpack serve --mode=development",
     "build": "webpack --mode=production",
-    "shreh": "node utils/scripts/cli.js"
+    "shreh": "node utils/scripts/cli.js",
+    "deploy": "yarn start && firebase deploy"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "dependencies": {
