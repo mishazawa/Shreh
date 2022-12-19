@@ -1,4 +1,4 @@
-import { Clock, WebGLRenderer } from "three";
+import { ACESFilmicToneMapping, Clock, PCFSoftShadowMap, WebGLRenderer } from "three";
 import { EffectComposer, Pass } from 'three/examples/jsm/postprocessing/EffectComposer';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
 
@@ -23,6 +23,7 @@ export class Core {
     this.updateScene(s)
     this.updateCompositeStack();
     await this.currentScene.onInit();
+    return this.currentScene;
   }
 
   constructor(domElement: HTMLCanvasElement | null) {
@@ -43,6 +44,11 @@ export class Core {
 
     this.renderer.setSize(w, h);
     this.renderer.setPixelRatio(window.devicePixelRatio);
+
+    this.renderer.physicallyCorrectLights = true;
+    this.renderer.toneMapping = ACESFilmicToneMapping;
+    this.renderer.shadowMap.enabled = true;
+    this.renderer.shadowMap.type = PCFSoftShadowMap; // default THREE.PCFShadowMap
 
     Globals.renderer = this.renderer; // idk
 

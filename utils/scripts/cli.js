@@ -37,7 +37,9 @@ async function writeSceneTemplate (destination, name) {
     await fs.access(dest)
     console.log(`${name}.ts scene already exists. Aborting.`);
   } catch {
-    await fs.mkdir(destination)
+    try {
+      await fs.mkdir(destination)
+    } catch {}
     const content = await fs.readFile(constants.SCENE_TEMPLATE, { encoding: 'utf8' });
     const renamed = content.replace(constants.SCENE_TEMPLATE_REPLACE_PATTERN, name);
     await fs.writeFile(dest, renamed)
