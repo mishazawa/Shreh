@@ -1,10 +1,12 @@
-import { PerspectiveCamera, Scene } from "three";
+import { BoxGeometry, IcosahedronGeometry, Mesh, MeshBasicMaterial, PerspectiveCamera, Scene } from "three";
 import { Globals } from "core/globals";
 import { IOnDestroy, IOnInit } from "core/lifecycle";
 import { Scene as ShrehScene } from "core/Scene";
 
+
 export class Raymarching extends ShrehScene implements IOnInit, IOnDestroy {
- constructor () {
+  public isosphere;
+  constructor () {
     super();
 
     this.scene = new Scene();
@@ -20,11 +22,11 @@ export class Raymarching extends ShrehScene implements IOnInit, IOnDestroy {
   }
 
   public override animate(delta: number) {
-
   }
 
 
   public onInit () {
+    this.isosphere = new BoxGeometry();
     return Promise.resolve()
   }
 

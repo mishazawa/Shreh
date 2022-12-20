@@ -6,6 +6,7 @@ import { Globals } from "./globals";
 import { IOnDestroy, IOnInit } from "./lifecycle";
 import { Scene } from "./Scene";
 
+import Stats from 'three/examples/jsm/libs/stats.module';
 
 
 type SceneLifecycle = Scene & IOnInit & IOnDestroy;
@@ -18,6 +19,8 @@ export class Core {
   private composer;
   private scenePass;
 
+  private stats;
+
   public async setScene (s: SceneLifecycle) {
     await this.currentScene?.onDestroy();
     this.updateScene(s)
@@ -26,16 +29,15 @@ export class Core {
     return this.currentScene;
   }
 
-  constructor(domElement: HTMLCanvasElement | null) {
-    if (domElement === null) {
-      throw "no canvas provided";
-    }
-
+  constructor() {
     this.clock = new Clock();
-    this.init(domElement);
+    this.init();
   }
 
-  private init(canvas) {
+  private init() {
+    const canvas = document.createElement('canvas');
+    document.body.appendChild(canvas);
+
     this.renderer = new WebGLRenderer({
       canvas,
     });
@@ -63,6 +65,7 @@ export class Core {
         const delta = this.clock.getDelta();
         this.currentScene.animate(delta);
         this.composer.render();
+        this.stats?.update();
       }
     } catch (e) {
       cancelAnimationFrame(this.frameId);
@@ -73,6 +76,16 @@ export class Core {
 
   public addPostFx (pass: Pass) {
     this.composer.addPass(pass);
+  }
+
+  public debug() {
+    this.stats = Stats();
+
+    const container = document.createElement('div');
+
+    document.body.appendChild(container);
+    container.appendChild( this.stats.dom );
+
   }
 
   private updateCompositeStack() {

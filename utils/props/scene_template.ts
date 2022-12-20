@@ -4,7 +4,7 @@ import { IOnDestroy, IOnInit } from "core/lifecycle";
 import { Scene as ShrehScene } from "core/Scene";
 
 export class %%%SCENE extends ShrehScene implements IOnInit, IOnDestroy {
- constructor () {
+  constructor () {
     super();
 
     this.scene = new Scene();
