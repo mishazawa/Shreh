@@ -5,6 +5,7 @@ const DEFAULT_CAMERA_FAR  = 1000;
 const DEFAULT_CAMERA_FOV  = 50;
 
 export class Globals {
+  public static DEBUG: boolean = false;
 
   public static renderer: WebGLRenderer;
 

@@ -6,6 +6,8 @@ import { Globals } from "./globals";
 import { IOnDestroy, IOnInit } from "./lifecycle";
 import { Scene } from "./Scene";
 
+// debug
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import Stats from 'three/examples/jsm/libs/stats.module';
 
 
@@ -20,6 +22,7 @@ export class Core {
   private scenePass;
 
   private stats;
+  private controls;
 
   public async setScene (s: SceneLifecycle) {
     await this.currentScene?.onDestroy();
@@ -66,6 +69,7 @@ export class Core {
         this.currentScene.animate(delta);
         this.composer.render();
         this.stats?.update();
+        this.controls?.update();
       }
     } catch (e) {
       cancelAnimationFrame(this.frameId);
@@ -79,13 +83,13 @@ export class Core {
   }
 
   public debug() {
+    Globals.DEBUG = true;
     this.stats = Stats();
 
     const container = document.createElement('div');
 
     document.body.appendChild(container);
     container.appendChild( this.stats.dom );
-
   }
 
   private updateCompositeStack() {
@@ -99,5 +103,10 @@ export class Core {
 
   private updateScene (s: SceneLifecycle) {
     this.currentScene = s;
+
+    if (Globals.DEBUG) {
+      this.controls = new OrbitControls( this.currentScene.camera, Globals.renderer.domElement );
+    }
+
   }
 }
