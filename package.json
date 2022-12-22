@@ -6,7 +6,6 @@
   "license": "MIT",
   "devDependencies": {
     "@types/three": "^0.146.0",
-    "cannon-es": "^0.20.0",
     "css-loader": "^6.7.3",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
@@ -24,10 +23,11 @@
     "start": "webpack serve --mode=development",
     "build": "webpack --mode=production",
     "shreh": "node utils/scripts/cli.js",
-    "deploy": "yarn start && firebase deploy"
+    "deploy": "yarn build && firebase deploy"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "dependencies": {
+    "cannon-es": "^0.20.0",
     "three": "^0.147.0"
   }
 }

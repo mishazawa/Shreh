@@ -3,16 +3,15 @@ import "./types.d";
 import "./style/index.scss";
 
 import { Core as App } from "core";
-import { Physics } from './game/scenes/Physics';
+import { Uvdistortion } from "game/scenes/Uvdistortion";
 
 const shreh = new App();
 
-shreh.debug();
+// shreh.debug();
 
 Promise.all([
-  shreh.setScene(new Physics()),
+  shreh.setScene(new Uvdistortion()),
 ]).then(async ([scene]) => {
-
   shreh.animate();
 })
 

@@ -42,6 +42,7 @@ module.exports = {
     alias: {
       core: path.resolve(__dirname, './src/core/'),
       assets: path.resolve(__dirname, './src/assets/'),
+      game: path.resolve(__dirname, './src/game/'),
     },
   },
   devtool: 'inline-source-map',
