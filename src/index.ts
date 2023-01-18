@@ -7,7 +7,7 @@ import { Uvdistortion } from "game/scenes/Uvdistortion";
 
 const shreh = new App();
 
-// shreh.debug();
+shreh.debug();
 
 Promise.all([
   shreh.setScene(new Uvdistortion()),
